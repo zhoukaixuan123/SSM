@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!-- 将数据库连接数据抽取到属性文件中方便测试 -->
+    <!-- <properties resource="/WEB-INF/classes/jdbc.properties"></properties> -->
+    <!-- 别名的定义 -->
+    <typeAliases>
+        <!-- model  实例对象-->
+        <package name="work.com.kaixuan"/>
+    </typeAliases>
+
+    <mappers>
+        <!-- 通过扫描包的方式来进行批量加载映射文件  mapper 接口-->
+        <package name="work.com.kaixuan"/>
+    </mappers>
+
+
+</configuration>

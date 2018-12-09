@@ -1,0 +1,13 @@
+
+注入对象注解区分：
+@Autowired  按照byType进行注入的
+@Resource   默认按照ByName自动注入
+
+自动扫描默认：
+   @Component的子注解@Service,@Reposity
+  <context:component-scan base-package="tv.huan.weisp.web .controller"> 可以扫描单独的包  和整个包
+  <ctext:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>   扫描指定的注解on
+
+批量注入 mapper  与单个注入
+MapperFactoryBean  单个注入 必须同时注入 sqlSessionFactioyBean
+MapperScannerConfigurer  : 批量注入  不用注入sqlSession 没 有 必 要 去 指 定 SqlSessionFactory 或 SqlSessionTemplate , 因 为 MapperScannerConfigurer 将会创建 MapperFactoryBean,之后自动装配。但是,如果你使 用了一个 以上的 DataSource ,那 么自动 装配可 能会失效 。这种 情况下 ,你可 以使用 sqlSessionFactoryBeanName 或 sqlSessionTemplateBeanName 属性来设置正确的 bean 名 称来使用。这就是它如何来配置的,注意 bean 的名称是必须的,而不是 bean 的引用,因 此,value 属性在这里替代通常的 ref:

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+
+    <!-- 监听器配置与 指定配置文件的位置   如果不特意指定参数名为contextConfigLoction的
+    <context-parameter>元素，那么spring的ContextLoderListener监听器就会
+    在/WEB-INF/下去寻找并加载该目录下的名为applicationContext.xml这个文件 所以加这个配置告诉他去哪-->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:/config/spring*.xml</param-value>
+    </context-param>
+
+
+    <!--  前端控制器
+       注意： init-param 默认找WEB-INF下的 配置文件
+       load-on-startup：数字越小  优先级越高
+       classpath：只会到你的class路径中查找找文件。
+       classpath*：不仅包含class路径，还包括jar文件中（class路径）进行查找。 缺点 加载慢-->
+    <servlet>
+        <servlet-name>springMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath*:/config/spring*.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+
+    <!-- 配置访问路径-->
+    <servlet-mapping>
+        <servlet-name>springMVC</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+    <!--默认打开页面-->
+    <welcome-file-list>
+        <welcome-file>/view/index</welcome-file>
+    </welcome-file-list>
+</web-app>

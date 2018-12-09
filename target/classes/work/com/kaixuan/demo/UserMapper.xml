@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="work.com.kaixuan.demo.UserMapper">
+    <select id="selectUserById" resultType="work.com.kaixuan.demo.UserModel">
+         select name,age,job from shop_test_hello
+    </select>
+
+</mapper>
