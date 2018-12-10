@@ -7,4 +7,8 @@
          select name,age,job from shop_test_hello
     </select>
 
+    <insert id="insertUser" parameterType="java.util.Map">
+           insert into  shop_test_hello(name,age,job) values (  #{name},#{age},#{job} )
+    </insert>
+
 </mapper>

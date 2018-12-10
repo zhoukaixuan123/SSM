@@ -7,8 +7,6 @@
 
     <!--自动扫描包-->
     <context:component-scan base-package="work.com.kaixuan"/>
-
-
     <!-- 默认的注解映射的支持 -->
     <mvc:annotation-driven />
     <!-- 视图解释类 -->

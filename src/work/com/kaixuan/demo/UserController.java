@@ -16,8 +16,8 @@ import java.util.List;
  */
 @Controller
 public class UserController {
-
-    @Autowired
+    //默认 是 bytype  注入  所以 要用  这个指定一下
+    @Resource(name = "userServiceImpl")
     private  UserServiceImpl userService;
 
     @RequestMapping("/index")
@@ -30,6 +30,8 @@ public class UserController {
         }
 
        model.setViewName("cart");
+
+        userService.insertUser();
        return  model;
 
     }

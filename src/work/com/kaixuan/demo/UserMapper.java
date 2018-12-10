@@ -3,6 +3,7 @@ package work.com.kaixuan.demo;
 import work.com.kaixuan.demo.UserModel;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.zhoukx
@@ -12,4 +13,6 @@ import java.util.List;
 public interface UserMapper  {
 
     public List<UserModel> selectUserById() ;
+
+    public  void  insertUser(Map<String,String> map);
 }
