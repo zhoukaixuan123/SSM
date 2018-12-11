@@ -3,6 +3,7 @@ package work.com.kaixuan.demo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.zhoukx
@@ -11,5 +12,5 @@ import java.util.List;
  */
 public interface UserService {
 
-    public List<UserModel> selectUserById() ;
+    public Map<String,String> selectUserById() ;
 }

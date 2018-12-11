@@ -41,6 +41,6 @@
 
     <!--默认打开页面-->
     <welcome-file-list>
-        <welcome-file>/view/index</welcome-file>
+        <welcome-file>WEB-INF/view/jsp/index.jsp</welcome-file>
     </welcome-file-list>
 </web-app>

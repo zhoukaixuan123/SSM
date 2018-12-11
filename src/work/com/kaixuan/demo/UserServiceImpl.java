@@ -19,18 +19,10 @@ public class UserServiceImpl {
     @Resource
     private UserMapper userMapper;
 
-    public List<UserModel> selectUserById() {
+    public  Map<String,String> selectUserById() {
           return  userMapper.selectUserById();
     }
 
 
-    public void insertUser(){
-        Map<String,String> map = new HashMap<String, String>();
-        map.put("name","张三");
-        map.put("age","12");
-        map.put("job","aa");
-        map.put("id","111");
 
-        userMapper.insertUser(map);
-    }
 }

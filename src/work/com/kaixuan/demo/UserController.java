@@ -4,10 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Auther: Mr.zhoukx
@@ -20,20 +23,25 @@ public class UserController {
     @Resource(name = "userServiceImpl")
     private  UserServiceImpl userService;
 
-    @RequestMapping("/index")
-    public ModelAndView  getIndex(){
-        ModelAndView model = new ModelAndView();
-       List<UserModel> models = userService.selectUserById();
-        model.addObject(models);
-        for(UserModel lis:models){
-            System.out.println(lis.getAge());
-        }
 
-       model.setViewName("cart");
 
-        userService.insertUser();
-       return  model;
 
+    /**
+     *
+     * 功能描述:
+     *
+     * @param: []
+     * @return: java.lang.String
+     * @auther: Mr.zhoukx
+     * @date: 2018/12/11 11:14
+     */
+    @RequestMapping("/getData")
+    public ModelAndView getDate( HttpServletRequest request){
+      String userid = request.getParameter("id");
+      ModelAndView maodel = new ModelAndView();
+     Map<String,String> map = userService.selectUserById();
+       maodel.addObject("map",map);
+       maodel.setViewName("index");
+     return  maodel;
     }
-
 }

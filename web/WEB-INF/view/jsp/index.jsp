@@ -1,294 +1,479 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags"  prefix="s"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
+<%--引进el表达式--%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%
+     String path = request.getContextPath();
+      /*使用项目根目录*/
+      String basePath = request.getContextPath()+"/";
+%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-<title>传智商城</title>
-<link href="${pageContext.request.contextPath}/css/slider.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/css/common.css" rel="stylesheet" type="text/css"/>
-<link href="${pageContext.request.contextPath}/css/index.css" rel="stylesheet" type="text/css"/>
+	<title>简介</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Favicon -->   
+	<link href="<%=basePath%>images/favicon.ico" rel="shortcut icon">
 
+	<!-- 样式 -->
+	<link rel="stylesheet" href="<%=basePath%>css/bootstrap.min.css">
+	<link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css">
+	<link rel="stylesheet" href="<%=basePath%>css/owl.carousel.css">
+	<link rel="stylesheet" href="<%=basePath%>css/magnific-popup.css">
+	<link rel="stylesheet" href="<%=basePath%>css/reset.css">
+	<link rel="stylesheet" href="<%=basePath%>css/style.css">
+
+
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+	<![endif]-->
+
+	<!-- ==== MODERNIZR ==== -->
+    <script src="<%=basePath%>js/modernizr.js"></script>
+	<script>
+		 window.onload=function (ev) {
+
+		 }
+	</script>
+    
 </head>
 <body>
 
-<div class="container header">
-	<div class="span5">
-		<div class="logo">
-			<a href="./网上商城/index.htm">
-				<img src="${pageContext.request.contextPath}/image/r___________renleipic_01/logo.gif" alt="传智播客"/>
-			</a>
-		</div>
-	</div>
-	<div class="span9">
-<div class="headerAd">
-	<img src="${pageContext.request.contextPath}/image/header.jpg" width="320" height="50" alt="正品保障" title="正品保障"/>
-</div>	
-</div>
+	<!-- ==== Preloader Section Start ==== -->
+	<div id="preloader">
+        <div class="pre-container">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+    </div>
+	<!-- ==== Preloader Section End ==== -->
 	
-	<%@ include file="menu.jsp" %>
+	<!-- ==== Navigation Start ==== -->
+	<nav>
+        <div class="row">
+            <div class="container">
+                <div class="logo">
+                    <img src="<%=basePath%>images/logo.png" alt=""><!-- Logo -->
+                </div>
+                <div class="mobile-bar"><span></span></div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- ==== Navigation End ==== -->
 
-</div>	
 
-<div class="container index">
-		
-
-		<div class="span24">
-			<div id="hotProduct" class="hotProduct clearfix">
-					<div class="title">
-						<strong>热门商品</strong>
-						<!-- <a  target="_blank"></a> -->
-					</div>
-					<ul class="tab">
-							<li class="current">
-								<a href="蔬菜分类.htm?tagIds=1" target="_blank"></a>
-							</li>
-							<li>
-								<a  target="_blank"></a>
-							</li>
-							<li>
-								<a target="_blank"></a>
-							</li>
-					</ul>
-<!-- 					<div class="hotProductAd">
-			<img src="${pageContext.request.contextPath}/image/a.jpg" width="260" height="343" alt="热门商品" title="热门商品">
-</div> -->
-						<ul class="tabContent" style="display: block;">
-							<s:iterator var="p" value="hList">
-									<li>
-										<a href="${ pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/0ff130db-0a1b-4b8d-a918-ed9016317009-thumbnail.jpg" style="display: block;"></a>
-									</li>
-							</s:iterator>		
-						</ul>
-						<ul class="tabContent" style="display: none;">
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/c5b1b396-181a-4805-9e68-9b400d71f91e-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/c5b1b396-181a-4805-9e68-9b400d71f91e-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/4107e1ce-5e7c-4941-bc0f-718f35ba14cd-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4107e1ce-5e7c-4941-bc0f-718f35ba14cd-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/6f8ae4bf-cbd3-41c7-aa22-0fe81db6add4-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/6f8ae4bf-cbd3-41c7-aa22-0fe81db6add4-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/3d835c07-08c5-46d7-912d-adcd41f8c8e6-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/3d835c07-08c5-46d7-912d-adcd41f8c8e6-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/5e5be432-fbee-4bdd-a7bd-a92e01f9bfc4-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/5e5be432-fbee-4bdd-a7bd-a92e01f9bfc4-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/cae1bc6b-0159-4ce0-9a9c-4926df231b4f-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/cae1bc6b-0159-4ce0-9a9c-4926df231b4f-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/40e34b2d-d240-446e-9874-89969edbe89f-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/40e34b2d-d240-446e-9874-89969edbe89f-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/a8db4410-05e5-4dfa-8217-eb885a104af3-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/a8db4410-05e5-4dfa-8217-eb885a104af3-thumbnail.jpg" style="display: block;"></a>
-									</li>
-						</ul>
-						<ul class="tabContent" style="display: none;">
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/9f164e13-bcaa-48a6-9b35-0ca96629f614-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/9f164e13-bcaa-48a6-9b35-0ca96629f614-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/c41d0347-364c-42bb-baeb-25142c1ed167-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/c41d0347-364c-42bb-baeb-25142c1ed167-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/2af8be8a-75b9-41ae-b009-a7c54b685a4e-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/2af8be8a-75b9-41ae-b009-a7c54b685a4e-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/1a3ad7de-7ee9-4530-b89a-46375219beb5-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/1a3ad7de-7ee9-4530-b89a-46375219beb5-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/ea566af4-0cdb-4017-a8c7-27e407794204-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/ea566af4-0cdb-4017-a8c7-27e407794204-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/dea31d42-fa3e-4b69-a631-51ca7c79f032-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/dea31d42-fa3e-4b69-a631-51ca7c79f032-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/1c81f492-a3d7-4c06-8658-bc2c76808cd3-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/1c81f492-a3d7-4c06-8658-bc2c76808cd3-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/f1174ca6-6bdf-4d0b-86e6-5455bc8e89ad-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/f1174ca6-6bdf-4d0b-86e6-5455bc8e89ad-thumbnail.jpg" style="display: block;"></a>
-									</li>
-						</ul>
+	<!-- ==== Intro Section Start ==== -->
+	<section class="intro-section" id="home">
+		<div class="intro-content">
+			<h1>${map.get("username")}</h1>
+			<div class="social">
+				<a href=""><i class="fa fa-facebook"></i></a>
+				<a href=""><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-behance"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
 			</div>
 		</div>
-		<div class="span24">
-			<div id="newProduct" class="newProduct clearfix">
-					<div class="title">
-						<strong>最新商品</strong>
-						<a  target="_blank"></a>
+		<a href="#about" class="down">
+			<i class="fa fa-angle-down"></i>
+		</a>
+	</section>
+	<!-- ==== Intro Section End ==== -->
+
+
+	<!-- ==== About Section Start ==== -->
+	<section class="about-section spad" id="about">
+		<div class="container">
+			<div class="col-md-6 col-sm-12 about-image">
+				<img src="<%=basePath%>images/avator.jpg" class="img-responsive" alt="">
+			</div>
+			<div class="col-md-6 col-sm-12">
+				<div class="about-text">
+					<h3>关于我的</h3>
+					<p>个人介绍...................................</p>
+				</div>
+				<div class="skills"><!-- Skills -->
+					<div class="single-progress-item">
+						 <%--技能介绍--%>
+						<h4>java</h4>
+						<div class="progress-bar-style" data-progress="80"></div>
 					</div>
-					<ul class="tab">
-							<li class="current">
-								<a href="蔬菜分类.htm?tagIds=2" target="_blank"></a>
-							</li>
-							<li>
-								<a  target="_blank"></a>
-							</li>
-							<li>
-								<a target="_blank"></a>
-							</li>
-					</ul>
-<!-- 					<div class="newProductAd">
-									<img src="${pageContext.request.contextPath}/image/q.jpg" width="260" height="343" alt="最新商品" title="最新商品">
+					<div class="single-progress-item">
+						<h4>html</h4>
+						<div class="progress-bar-style" data-progress="90"></div>
+					</div>
+					<div class="single-progress-item">
+						<h4>javaScript</h4>
+						<div class="progress-bar-style" data-progress="75"></div>
+					</div>
+					<div class="single-progress-item">
+						<h4>linux</h4>
+						<div class="progress-bar-style" data-progress="93"></div>
+					</div>
+					<div class="single-progress-item">
+						<h4>git/svn</h4>
+						<div class="progress-bar-style" data-progress="85"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ==== About Section End ==== -->
+
+
+	<!-- ==== Services Section Start ==== -->
+	<section class="services-section spad">
+		<div class="container">
+			<!-- Services Items -->
+			<div class="row">
+				<!-- item -->
+				<div class="col-md-3 col-sm-6 service-item">
+					<div class="icon">
+						<i class="fa fa-magic"></i>
+						<span></span>
+					</div>
+					<h4>GRPHICE</h4>
+					<p>个人项目展示...服务地址</p>
+				</div>
+				<!-- item -->
+				<div class="col-md-3 col-sm-6 service-item">
+					<div class="icon">
+						<i class="fa fa-leaf"></i>
+						<span></span>
+					</div>
+					<h4>BRANDING</h4>
+					<p>个人项目展示...服务地址</p>
+				</div>
+				<!-- item -->
+				<div class="col-md-3 col-sm-6 service-item">
+					<div class="icon">
+						<i class="fa fa-camera"></i>
+						<span></span>
+					</div>
+					<h4>PHOTOGRAPHY</h4>
+					<p>个人项目展示...服务地址</p>
+				</div>
+				<!-- item -->
+				<div class="col-md-3 col-sm-6 service-item">
+					<div class="icon">
+						<i class="fa fa-cog"></i>
+						<span></span>
+					</div>
+					<h4>CUSTOMIZATION</h4>
+					<p>个人展示................</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ==== Services Section End ==== -->
+
+
+	<!-- ==== Portfolios Section Start ==== -->
+	<section class="portfolios-section spad" id="portfolio">
+		<div class="container">
+			<div class="section-title">
+				<h2>个人项目</h2>
+				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
+			</div>
+			<ul class="portfolio-filter">
+			    <li class="filter" data-filter="*">ALL</li>
+			    <li class="filter" data-filter=".ill">ILLUSTRATIONS</li>
+			    <li class="filter" data-filter=".brand">BRANDING</li>
+			    <li class="filter" data-filter=".fs">FASHION</li>
+		    </ul>
+		   	<!-- Portfolio items -->
+			<div class="row portfolio_container">
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 ill">
+					<div class="work-item">
+						<img src="../images/portfolio/1.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-1"><i class="fa fa-search"></i></a>
 						</div>
-						 -->						
-						 <ul class="tabContent" style="display: block;">
-						 	<s:iterator var="p" value="nList">
-									<li>
-										<a href="${ pageContext.request.contextPath }/product_findByPid.action?pid=<s:property value="#p.pid"/>" target="_blank"><img src="${pageContext.request.contextPath}/<s:property value="#p.image"/>" data-original="http://storage.shopxx.net/demo-image/3.0/201301/4a51167a-89d5-4710-aca2-7c76edc355b8-thumbnail.jpg" style="display: block;"></a>									</li>
-									</li>
-							</s:iterator>		
-						</ul>
-						<ul class="tabContent" style="display: none;">
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/b04a22f5-267d-4e33-ac58-dda941eeaf84-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b04a22f5-267d-4e33-ac58-dda941eeaf84-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/ca3043f5-dbb0-4a03-9bb6-8274f78b5d7e-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/ca3043f5-dbb0-4a03-9bb6-8274f78b5d7e-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/a2ac0816-37e4-477a-b179-e64f71252cf5-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/a2ac0816-37e4-477a-b179-e64f71252cf5-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/fbb80ec8-a1d3-49de-b83b-79eae4b1ff69-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/fbb80ec8-a1d3-49de-b83b-79eae4b1ff69-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/bb99deac-0b33-48f1-a3ad-e8310516be07-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/bb99deac-0b33-48f1-a3ad-e8310516be07-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/7b3c0647-1016-4d13-8b84-4d63818e1179-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/7b3c0647-1016-4d13-8b84-4d63818e1179-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/3c79f82f-f136-48aa-9e81-7e10fbb3de2a-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/3c79f82f-f136-48aa-9e81-7e10fbb3de2a-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/b998f840-91fc-41b6-b73d-70587babf760-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/b998f840-91fc-41b6-b73d-70587babf760-thumbnail.jpg" style="display: block;"></a>
-									</li>
-						</ul>
-						<ul class="tabContent" style="display: none;">
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/9f164e13-bcaa-48a6-9b35-0ca96629f614-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/9f164e13-bcaa-48a6-9b35-0ca96629f614-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/1a3ad7de-7ee9-4530-b89a-46375219beb5-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/1a3ad7de-7ee9-4530-b89a-46375219beb5-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/7acae4ac-5909-4142-8b20-19c5462859d6-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/7acae4ac-5909-4142-8b20-19c5462859d6-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/ea566af4-0cdb-4017-a8c7-27e407794204-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/ea566af4-0cdb-4017-a8c7-27e407794204-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/dea31d42-fa3e-4b69-a631-51ca7c79f032-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/dea31d42-fa3e-4b69-a631-51ca7c79f032-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/1c81f492-a3d7-4c06-8658-bc2c76808cd3-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/1c81f492-a3d7-4c06-8658-bc2c76808cd3-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/f1174ca6-6bdf-4d0b-86e6-5455bc8e89ad-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/f1174ca6-6bdf-4d0b-86e6-5455bc8e89ad-thumbnail.jpg" style="display: block;"></a>
-									</li>
-									<li>
-										<a  target="_blank"><img src="./Mango商城 - Powered By Mango Team_files/2971c96e-9f11-4491-9faf-9ea7e1fec53c-thumbnail.jpg" data-original="http://storage.shopxx.net/demo-image/3.0/201301/2971c96e-9f11-4491-9faf-9ea7e1fec53c-thumbnail.jpg" style="display: block;"></a>
-									</li>
-						</ul>
+					</div>
+					<div id="workID-1" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/1.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 brand">
+					<div class="work-item">
+						<img src="../images/portfolio/2.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-2"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<div id="workID-2" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/2.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 fs">
+					<div class="work-item">
+						<img src="../images/portfolio/3.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-3"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<div id="workID-3" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/3.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 ill">
+					<div class="work-item">
+						<img src="../images/portfolio/4.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-4"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<div id="workID-4" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/4.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 brand">
+					<div class="work-item">
+						<img src="../images/portfolio/5.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-5"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<div id="workID-5" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/5.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
+				<!-- item -->	
+				<div class="grid-item col-md-4 col-sm-4 col-xs-12 fs">
+					<div class="work-item">
+						<img src="../images/portfolio/6.jpg" alt="">
+						<div class="work-inner">
+							<a class="work-zoom" href="#workID-6"><i class="fa fa-search"></i></a>
+						</div>
+					</div>
+					<div id="workID-6" class="mfp-hide work-popup">
+	                  	<img src="../images/portfolio/6.jpg" alt="">
+	                  	<div class="work-popup-content">
+		                    <h3>Project Title</h3>
+		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
+		                </div>
+	              	</div> 
+				</div>
 			</div>
 		</div>
-		<div class="span24">
-			<div class="friendLink">
-				<dl>
-					<dt>新手指南</dt>
-							<dd>
-								<a  target="_blank">支付方式</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">配送方式</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">售后服务</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">购物帮助</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">蔬菜卡</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">礼品卡</a>
-								|
-							</dd>
-							<dd>
-								<a target="_blank">银联卡</a>
-								|
-							</dd>
-							<dd>
-								<a  target="_blank">亿家卡</a>
-								|
-							</dd>
-							
-					<dd class="more">
-						<a >更多</a>
-					</dd>
-				</dl>
+	</section>
+	<!-- ==== Portfolios Section End ==== -->
+	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
+
+
+	<!-- ==== Testinonial Section Start ==== -->
+ 	<section class="testinonial-section spad">
+		<div class="container">
+			<div class="section-title">
+				<h2>CLINTS</h2>
+				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
+			</div>
+			<div class="testinonial-carousel">
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/1.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/2.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/3.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/4.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/5.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/6.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/7.svg" alt="">
+					</a>
+				</div>
+				<div class="brand-item">
+					<a href="">
+						<img src="<%=basePath%>images/brand/8.svg" alt="">
+					</a>
+				</div>
 			</div>
 		</div>
-	</div>
-<div class="container footer">
-	<div class="span24">
-		<div class="footerAd">
-					<img src="${pageContext.request.contextPath}/image/footer.jpg" width="950" height="52" alt="我们的优势" title="我们的优势">
-</div>	</div>
-	<div class="span24">
-		<ul class="bottomNav">
-					<li>
-						<a>关于我们</a>
-						|
-					</li>
-					<li>
-						<a>联系我们</a>
-						|
-					</li>
-					<li>
-						<a>招贤纳士</a>
-						|
-					</li>
-					<li>
-						<a>法律声明</a>
-						|
-					</li>
-					<li>
-						<a>友情链接</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">支付方式</a>
-						|
-					</li>
-					<li>
-						<a target="_blank">配送方式</a>
-						|
-					</li>
-					<li>
-						<a>服务声明</a>
-						|
-					</li>
-					<li>
-						<a>广告声明</a>
+	</section>
+	<!-- ==== Testinonial Section End ==== -->
+
+
+	<!-- ==== Blogs Section Start ==== -->
+	<section class="blog-section spad" id="blog">
+		<div class="container">
+			<div class="section-title">
+				<h2>个人展示</h2>
+				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
+			</div>
+			<div class="row">
+				<!-- single-post -->
+				<div class="col-md-4">
+					<a href="single-blog.html" class="blog-item">
+						<img src="<%=basePath%>images/blog/blog1.jpg" alt="">
+						<div class="blog-item-text">
+							<h3>Out believe has request not how</h3>
+							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
+							<h5>7 February 2017 / POSTED BY ADMIN</h5>
+						</div>
+					</a>
+				</div>
+				<!-- single-post -->
+				<div class="col-md-4">
+					<a href="single-blog.html" class="blog-item">
+						<img src="<%=basePath%>images/blog/blog2.jpg" alt="">
+						<div class="blog-item-text">
+							<h3>Out believe has request not how</h3>
+							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
+							<h5>7 February 2017 / POSTED BY ADMIN</h5>
+						</div>
+					</a>
+				</div>
+				<!-- single-post -->
+				<div class="col-md-4">
+					<a href="single-blog.html" class="blog-item">
+						<img src="<%=basePath%>images/blog/blog3.jpg" alt="">
+						<div class="blog-item-text">
+							<h3>Out believe has request not how</h3>
+							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
+							<h5>7 February 2017 / POSTED BY ADMIN</h5>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="text-center mt20">
+				<a href="blog-page.html" class="site-button">LOAD MORE.</a>
+			</div>
+		</div>
+	</section>
+	<!-- ==== Blogs Section End ==== -->
+
+
+	<!-- ==== Contact Section Start ==== -->
+	<section class="contact-section spad" id="contact">
+		<div class="container">
+			<div class="section-title">
+				<h2>联系我</h2>
+				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
+			</div>
+			<div class="row">
+				<div class="col-md-5">
+					<ul class="con-info">
+						<li>
+							<i class="fa fa-phone"></i>
+							<span>Phone</span>
+							<p>+1 (123) 456-7890</p>
+						</li>
+						<li>
+							<i class="fa fa-envelope-o"></i>
+							<span>Email</span>
+							<p>domain@gmail.com</p>
+						</li>
+						<li>
+							<i class="fa fa-map-marker"></i>
+							<span>Address</span>
+							<p>A902, Crosswinds Apt, Western Road,<br> Brighton, East Sussex, Bath</p>
+						</li>
+					</ul>
+				</div>
+				<div class="col-md-7 contact-left">
+					<div id="form-chack"></div>
+					<!-- Contact Form -->
+					<form action="mail.php" id="contact-form" method="POST" >
+
+						<input type="text" name="name" id="name" required placeholder="Your Name*">
 						
-					</li>
-		</ul>
-	</div>
-	<div class="span24">
-		<div class="copyright">Copyright © 2005-2015 网上商城 版权所有</div>
-	</div>
-</div>
+						<input type="email" name="email" id="email" required placeholder="Your Email*">
+
+						<div class="send-btn-div">
+							<textarea id="massage" name="massage" required placeholder="Your Massage*"></textarea>
+							<button type="submit" class="send-btn"><i class="fa fa-send"></i></button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- ==== Contact Section End ==== -->
+
+
+	<!-- ==== Footer Start ==== -->
+	<footer>
+		<div class="container">
+			<div class="social">
+				<a href=""><i class="fa fa-facebook"></i></a>
+				<a href=""><i class="fa fa-twitter"></i></a>
+				<a href="#"><i class="fa fa-behance"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+			</div>
+			<p>Copyright &copy; 2017.Company name All rights reserved.More Templates <a href="http://www.cssmoban.com/" target="_blank" title="模板之家">模板之家</a> - Collect from <a href="http://www.cssmoban.com/" title="网页模板" target="_blank">网页模板</a></p>
+		</div>
+	</footer>
+	<!-- ==== Footer End ==== -->
+
+
+	<!-- ==== Jquery and other scripts ==== -->
+	<script src="<%=basePath%>js/jquery-2.1.4.min.js"></script>
+	<script src="<%=basePath%>js/jquery.nav.js"></script>
+	<script src="<%=basePath%>js/imagesloaded.pkgd.min.js"></script>
+	<script src="<%=basePath%>js/isotope.pkgd.min.js"></script>
+	<script src="<%=basePath%>js/owl.carousel.min.js"></script>
+	<script src="<%=basePath%>js/magnific-popup.min.js"></script>
+	<script src="<%=basePath%>js/main.js"></script>
 </body>
 </html>
+

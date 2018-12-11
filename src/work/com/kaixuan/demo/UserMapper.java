@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface UserMapper  {
 
-    public List<UserModel> selectUserById() ;
+    public Map<String,String> selectUserById() ;
 
-    public  void  insertUser(Map<String,String> map);
+
 }
