@@ -19,7 +19,7 @@ public class UserServiceImpl {
     @Resource
     private UserMapper userMapper;
 
-    public  Map<String,String> selectUserById() {
+    public  List<Map<String,String>>  selectUserById() {
           return  userMapper.selectUserById();
     }
 

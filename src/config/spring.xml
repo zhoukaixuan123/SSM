@@ -25,7 +25,7 @@
     <context:property-placeholder location="classpath:config/jdbc.properties" />
 
     <!-- 配置数据源  线程池 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close" >
+   <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close" >
         <property name="driverClassName" value="${driver}" />
         <property name="url" value="${url}" />
         <property name="username" value="${username}" />
@@ -34,8 +34,14 @@
         <property name="maxIdle" value="${maxIdle}" />
         <property name="minIdle" value="${minIdle}" />
         <property name="maxWait" value="${maxWait}" />
-    </bean>
+    </bean>-->
 
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="${jdbc.connection.driver_class}" />
+    <property name="url" value="${jdbc.connection.url}" />
+    <property name="username" value="${jdbc.connection.username}" />
+    <property name="password" value="${jdbc.connection.password}" />
+    </bean>
 
     <!-- 配置sqlSessionFactory，SqlSessionFactoryBean是用来产生sqlSessionFactory的 -->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">

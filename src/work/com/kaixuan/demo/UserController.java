@@ -39,7 +39,7 @@ public class UserController {
     public ModelAndView getDate( HttpServletRequest request){
       String userid = request.getParameter("id");
       ModelAndView maodel = new ModelAndView();
-     Map<String,String> map = userService.selectUserById();
+        List<Map<String,String>>  map = userService.selectUserById();
        maodel.addObject("map",map);
        maodel.setViewName("index");
      return  maodel;

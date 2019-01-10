@@ -12,7 +12,7 @@ import java.util.Map;
  */
 public interface UserMapper  {
 
-    public Map<String,String> selectUserById() ;
+    public  List<Map<String,String>> selectUserById() ;
 
 
 }

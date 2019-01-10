@@ -4,17 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="work.com.kaixuan.demo.UserMapper">
     <select id="selectUserById" resultType="java.util.Map">
-        select user_name as username,
-               user_id as userid,
-               introduce_id as introduceid ,
-               user_photo as userphoto,
-               service_id as serviceid,
-               project_id as projectid,
-               exhibition_id as exhibitionid,
-               phone,
-               email,
-               adress
-          from zhoukx_table_zhuti
+      select * from ENT_INFO
     </select>
 
 </mapper>

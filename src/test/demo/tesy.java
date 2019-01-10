@@ -14,6 +14,7 @@ import work.com.kaixuan.demo.UserModel;
 import work.com.kaixuan.demo.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 
 public class tesy {
@@ -37,10 +38,9 @@ public class tesy {
         System.out.println(applicationContext);
         UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
         System.out.println(userMapper);
-        List<UserModel> user = userMapper.selectUserById();
-        for(UserModel map :user){
-            System.out.println(map.getAge());
-        }
+        List<Map<String,String>>  user = userMapper.selectUserById();
+        System.out.println(user);
+
     }
     @Test
     public  void  getObjec(){
