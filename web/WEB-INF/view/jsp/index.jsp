@@ -24,6 +24,7 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" href="<%=basePath%>css/font-awesome.min.css">
 	<link rel="stylesheet" href="<%=basePath%>css/owl.carousel.css">
 	<link rel="stylesheet" href="<%=basePath%>css/magnific-popup.css">
+	<script type="text/javascript" src="<%=basePath%>/js/jquery-1.9.1.js" ></script>
 	<link rel="stylesheet" href="<%=basePath%>css/reset.css">
 	<link rel="stylesheet" href="<%=basePath%>css/style.css">
 
@@ -39,6 +40,23 @@ pageEncoding="UTF-8"%>
 		 window.onload=function (ev) {
 
 		 }
+		 function js_method(){
+		     window.opener="<%=path%>/address.do";
+         }
+
+         //悬停展示详情
+         function selectDetails(user_id){
+
+		     //悬停一秒  显示 具体信息
+             timer = setTimeout(function(){
+                 //做你想做的事
+                 window.open ('<%=path%>/selectXQ.do?user_id='+user_id, 'newwindow', 'height=500, width=600, top=100, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no')
+
+             },2000);
+		 }
+
+
+
 	</script>
     
 </head>
@@ -64,11 +82,10 @@ pageEncoding="UTF-8"%>
                 </div>
                 <div class="mobile-bar"><span></span></div>
                 <ul class="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#home">主页</a></li>
+                    <li><a href="#about">自我介绍</a></li>
+                    <li><a href="#blog">我的展示</a></li>
+                    <li><a href="#contact">联系我</a></li>
                 </ul>
             </div>
         </div>
@@ -79,7 +96,7 @@ pageEncoding="UTF-8"%>
 	<!-- ==== Intro Section Start ==== -->
 	<section class="intro-section" id="home">
 		<div class="intro-content">
-			<h1>${map.get("username")}</h1>
+			<h1>关于我</h1>
 			<div class="social">
 				<a href=""><i class="fa fa-facebook"></i></a>
 				<a href=""><i class="fa fa-twitter"></i></a>
@@ -98,35 +115,26 @@ pageEncoding="UTF-8"%>
 	<section class="about-section spad" id="about">
 		<div class="container">
 			<div class="col-md-6 col-sm-12 about-image">
-				<img src="<%=basePath%>images/avator.jpg" class="img-responsive" alt="">
+				<img src="<%=basePath%>images/kaixuan.jpg" class="img-responsive" alt="">
 			</div>
 			<div class="col-md-6 col-sm-12">
 				<div class="about-text">
 					<h3>关于我的</h3>
-					<p>个人介绍...................................</p>
+					<p>姓名：${mapUser.get("user_name")}  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 年龄：${mapUser.get("user_age")} <br>
+                        <br>
+                       民族：${mapUser.get("user_data")}    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp    学历： ${mapUser.get("user_study")}
+
+                    </p>
 				</div>
 				<div class="skills"><!-- Skills -->
-					<div class="single-progress-item">
-						 <%--技能介绍--%>
-						<h4>java</h4>
-						<div class="progress-bar-style" data-progress="80"></div>
-					</div>
-					<div class="single-progress-item">
-						<h4>html</h4>
-						<div class="progress-bar-style" data-progress="90"></div>
-					</div>
-					<div class="single-progress-item">
-						<h4>javaScript</h4>
-						<div class="progress-bar-style" data-progress="75"></div>
-					</div>
-					<div class="single-progress-item">
-						<h4>linux</h4>
-						<div class="progress-bar-style" data-progress="93"></div>
-					</div>
-					<div class="single-progress-item">
-						<h4>git/svn</h4>
-						<div class="progress-bar-style" data-progress="85"></div>
-					</div>
+
+                    <c:forEach items="${skilMap}" var="skill">
+                        <div class="single-progress-item">
+                                <%--技能介绍--%>
+							<h4>${skill.get("skill_name")}</h4>
+                            <div class="progress-bar-style" data-progress="100" onmouseover="selectDetails(${skill.get("user_id")})"></div>
+                        </div>
+                    </c:forEach>
 				</div>
 			</div>
 		</div>
@@ -145,8 +153,8 @@ pageEncoding="UTF-8"%>
 						<i class="fa fa-magic"></i>
 						<span></span>
 					</div>
-					<h4>GRPHICE</h4>
-					<p>个人项目展示...服务地址</p>
+					<h4>GitHub</h4>
+					<p><a  href="https://github.com/zhoukaixuan123?tab=repositories" target="view_window" style="color: black">GitHub源码展示</a></p>
 				</div>
 				<!-- item -->
 				<div class="col-md-3 col-sm-6 service-item">
@@ -154,8 +162,8 @@ pageEncoding="UTF-8"%>
 						<i class="fa fa-leaf"></i>
 						<span></span>
 					</div>
-					<h4>BRANDING</h4>
-					<p>个人项目展示...服务地址</p>
+					<h4>CSDN</h4>
+					<p><a href="https://blog.csdn.net/weixin_42226741" target="view_window" style="color: black">CSDN地址</a></p>
 				</div>
 				<!-- item -->
 				<div class="col-md-3 col-sm-6 service-item">
@@ -163,8 +171,8 @@ pageEncoding="UTF-8"%>
 						<i class="fa fa-camera"></i>
 						<span></span>
 					</div>
-					<h4>PHOTOGRAPHY</h4>
-					<p>个人项目展示...服务地址</p>
+					<h4>RESUME</h4>
+					<p><a href="#"  style="color: black">简历</a></p>
 				</div>
 				<!-- item -->
 				<div class="col-md-3 col-sm-6 service-item">
@@ -172,8 +180,8 @@ pageEncoding="UTF-8"%>
 						<i class="fa fa-cog"></i>
 						<span></span>
 					</div>
-					<h4>CUSTOMIZATION</h4>
-					<p>个人展示................</p>
+					<h4>PERSONAL PROJECTS</h4>
+					<p><a href="#"  style="color: black">个人项目</a></p>
 				</div>
 			</div>
 		</div>
@@ -181,184 +189,18 @@ pageEncoding="UTF-8"%>
 	<!-- ==== Services Section End ==== -->
 
 
-	<!-- ==== Portfolios Section Start ==== -->
-	<section class="portfolios-section spad" id="portfolio">
-		<div class="container">
-			<div class="section-title">
-				<h2>个人项目</h2>
-				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
-			</div>
-			<ul class="portfolio-filter">
-			    <li class="filter" data-filter="*">ALL</li>
-			    <li class="filter" data-filter=".ill">ILLUSTRATIONS</li>
-			    <li class="filter" data-filter=".brand">BRANDING</li>
-			    <li class="filter" data-filter=".fs">FASHION</li>
-		    </ul>
-		   	<!-- Portfolio items -->
-			<div class="row portfolio_container">
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 ill">
-					<div class="work-item">
-						<img src="../images/portfolio/1.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-1"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-1" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/1.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 brand">
-					<div class="work-item">
-						<img src="../images/portfolio/2.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-2"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-2" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/2.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 fs">
-					<div class="work-item">
-						<img src="../images/portfolio/3.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-3"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-3" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/3.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 ill">
-					<div class="work-item">
-						<img src="../images/portfolio/4.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-4"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-4" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/4.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 brand">
-					<div class="work-item">
-						<img src="../images/portfolio/5.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-5"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-5" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/5.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-				<!-- item -->	
-				<div class="grid-item col-md-4 col-sm-4 col-xs-12 fs">
-					<div class="work-item">
-						<img src="../images/portfolio/6.jpg" alt="">
-						<div class="work-inner">
-							<a class="work-zoom" href="#workID-6"><i class="fa fa-search"></i></a>
-						</div>
-					</div>
-					<div id="workID-6" class="mfp-hide work-popup">
-	                  	<img src="../images/portfolio/6.jpg" alt="">
-	                  	<div class="work-popup-content">
-		                    <h3>Project Title</h3>
-		                    <p>In media, which includes textual, audio, and visual content, free licensing schemes such as some of the licenses made by Creative Commons have allowed for the dissemination of works under a clear set of legal permissions.</p>
-		                </div>
-	              	</div> 
-				</div>
-			</div>
-		</div>
-	</section>
+
 	<!-- ==== Portfolios Section End ==== -->
 	<div class="tlinks">Collect from <a href="http://www.cssmoban.com/"  title="网站模板">网站模板</a></div>
 
-
-	<!-- ==== Testinonial Section Start ==== -->
- 	<section class="testinonial-section spad">
-		<div class="container">
-			<div class="section-title">
-				<h2>CLINTS</h2>
-				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
-			</div>
-			<div class="testinonial-carousel">
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/1.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/2.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/3.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/4.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/5.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/6.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/7.svg" alt="">
-					</a>
-				</div>
-				<div class="brand-item">
-					<a href="">
-						<img src="<%=basePath%>images/brand/8.svg" alt="">
-					</a>
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- ==== Testinonial Section End ==== -->
 
 
 	<!-- ==== Blogs Section Start ==== -->
 	<section class="blog-section spad" id="blog">
 		<div class="container">
 			<div class="section-title">
-				<h2>个人展示</h2>
-				<p>Out believe has request not how comfort evident. Up delight cousins we feeling<br>minutes. Genius has looked end piqued spring.</p>
+				<h2>项目展示</h2>
+				<p>I hope tomorrow will be better! Better technology! More core! Higher wages</p>
 			</div>
 			<div class="row">
 				<!-- single-post -->
@@ -415,18 +257,18 @@ pageEncoding="UTF-8"%>
 					<ul class="con-info">
 						<li>
 							<i class="fa fa-phone"></i>
-							<span>Phone</span>
-							<p>+1 (123) 456-7890</p>
+							<span>电话</span>
+							<p>${mapUser.get("user_phone")}</p>
 						</li>
 						<li>
 							<i class="fa fa-envelope-o"></i>
 							<span>Email</span>
-							<p>domain@gmail.com</p>
+							<p>${mapUser.get("user_email")}</p>
 						</li>
 						<li>
 							<i class="fa fa-map-marker"></i>
-							<span>Address</span>
-							<p>A902, Crosswinds Apt, Western Road,<br> Brighton, East Sussex, Bath</p>
+							<span><a  href="<%=path%>/address.do">地址</a></span>
+							<p>${mapUser.get("user_address")}</p>
 						</li>
 					</ul>
 				</div>

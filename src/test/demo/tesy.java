@@ -30,16 +30,18 @@ public class tesy {
 
     @Before
     public void setUp() throws Exception {
+        //测试是否能够加载配置文件
         applicationContext = new ClassPathXmlApplicationContext("classpath:/spring.xml");//得到spring容器
     }
 
     @Test
     public void testSelectUserById() throws Exception {
         System.out.println(applicationContext);
+        //获得对象
         UserMapper userMapper = (UserMapper) applicationContext.getBean("userMapper");
         System.out.println(userMapper);
-        List<Map<String,String>>  user = userMapper.selectUserById();
-        System.out.println(user);
+        //List<Map<String,String>>  user = userMapper.selectUserById();
+        //  System.out.println(user);
 
     }
     @Test

@@ -1,10 +1,8 @@
 package work.com.kaixuan.demo;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,15 +12,26 @@ import java.util.Map;
  * @Description: 描述
  */
 @Service
-public class UserServiceImpl {
+public class UserServiceImpl  implements UserService{
 
     @Resource
     private UserMapper userMapper;
 
-    public  List<Map<String,String>>  selectUserById() {
+    public  Map<String,String> selectUserById() {
           return  userMapper.selectUserById();
     }
 
+    public List<Map<String, String>> selectUserSkill(String user_id) {
+        return userMapper.selectUserSkill(user_id);
+    }
+
+    public List<Map<String, String>> selectUserAchievement(String user_id) {
+        return userMapper.selectUserAchievement(user_id);
+    }
+
+    public Map<String, String> selectUserSkillXQ(String user_id) {
+        return userMapper.selectUserSkillXQ(user_id);
+    }
 
 
 }
