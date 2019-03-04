@@ -16,14 +16,16 @@
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <!--#注：主容器中不扫描@Controller注解，因为@Controller将会在SpringMVC扫描-->
+<!--
     <context:component-scan base-package="work.com.kaixuan" />
+-->
     <!-- 默认的注解映射的支持 -->
-    <mvc:annotation-driven />
+   <!-- <mvc:annotation-driven />-->
      <!--引入jdbc 配置文件-->
     <context:property-placeholder location="classpath:config/jdbc.properties" />
 
     <!-- 配置数据源  线程池 -->
-    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close" >
+   <!-- <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close" >
         <property name="driverClassName" value="${driver}" />
         <property name="url" value="${url}" />
         <property name="username" value="${username}" />
@@ -32,8 +34,14 @@
         <property name="maxIdle" value="${maxIdle}" />
         <property name="minIdle" value="${minIdle}" />
         <property name="maxWait" value="${maxWait}" />
-    </bean>
+    </bean>-->
 
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+    <property name="driverClassName" value="${jdbc.connection.driver_class}" />
+    <property name="url" value="${jdbc.connection.url}" />
+    <property name="username" value="${jdbc.connection.username}" />
+    <property name="password" value="${jdbc.connection.password}" />
+    </bean>
 
     <!-- 配置sqlSessionFactory，SqlSessionFactoryBean是用来产生sqlSessionFactory的 -->
    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -48,5 +56,13 @@
         <property name="basePackage" value="work.com.kaixuan"/>
         <!--<property name="sqlSessionFactory" ref="sqlSessionFactory"  /> 不用实现注入  否则会失效-->
       </bean>
+
+
+    <!--开启事物管理器  给数据源开启事物-->
+   <!-- <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+     &lt;!&ndash;注解的形式开启事物&ndash;&gt;
+    <tx:annotation-driven transaction-manager="txManager"/>-->
 
 </beans>

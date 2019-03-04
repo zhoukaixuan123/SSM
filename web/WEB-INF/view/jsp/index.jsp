@@ -45,17 +45,20 @@ pageEncoding="UTF-8"%>
          }
 
          //悬停展示详情
-         function selectDetails(user_id){
+         function selectDetails(user_id) {
 
-		     //悬停一秒  显示 具体信息
-             timer = setTimeout(function(){
+             //悬停一秒  显示 具体信息
+             timer = setTimeout(function () {
                  //做你想做的事
-                 window.open ('<%=path%>/selectXQ.do?user_id='+user_id, 'newwindow', 'height=500, width=600, top=100, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no')
+                 window.open('<%=path%>/selectXQ.do?user_id=' + user_id, 'newwindow', 'height=500, width=600, top=100, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no')
 
-             },2000);
-		 }
+             }, 2000);
+         }
+         //查看更多的项目
+         function js_method(user_id) {
 
-
+             window.open('<%=path%>/jsMethod.do?user_id=' + user_id, 'newwindow', 'height=1000, width=1000, top=100, left=300, toolbar=no, menubar=no, scrollbars=no, resizable=no,location=n o, status=no')
+         }
 
 	</script>
     
@@ -204,41 +207,21 @@ pageEncoding="UTF-8"%>
 			</div>
 			<div class="row">
 				<!-- single-post -->
+				<c:forEach items="${mapAchievement}" var="mapAchievement" end="3">
 				<div class="col-md-4">
-					<a href="single-blog.html" class="blog-item">
-						<img src="<%=basePath%>images/blog/blog1.jpg" alt="">
+					<a href="<%=basePath%>${mapAchievement.achievement_images}" class="blog-item">
+						<img src="<%=basePath%>${mapAchievement.achievement_images}">
 						<div class="blog-item-text">
-							<h3>Out believe has request not how</h3>
-							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
-							<h5>7 February 2017 / POSTED BY ADMIN</h5>
+							<h3>${mapAchievement.achievement_name}</h3>
+							<p>${mapAchievement.achievement_skill}</p>
+							<h5>${mapAchievement.achievement_describe}</h5>
 						</div>
 					</a>
 				</div>
-				<!-- single-post -->
-				<div class="col-md-4">
-					<a href="single-blog.html" class="blog-item">
-						<img src="<%=basePath%>images/blog/blog2.jpg" alt="">
-						<div class="blog-item-text">
-							<h3>Out believe has request not how</h3>
-							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
-							<h5>7 February 2017 / POSTED BY ADMIN</h5>
-						</div>
-					</a>
-				</div>
-				<!-- single-post -->
-				<div class="col-md-4">
-					<a href="single-blog.html" class="blog-item">
-						<img src="<%=basePath%>images/blog/blog3.jpg" alt="">
-						<div class="blog-item-text">
-							<h3>Out believe has request not how</h3>
-							<p>Quick six blind smart out burst. Perfectly on furniture dejection determine my depending an to. Add short water court fat.</p>
-							<h5>7 February 2017 / POSTED BY ADMIN</h5>
-						</div>
-					</a>
-				</div>
+				</c:forEach>
 			</div>
 			<div class="text-center mt20">
-				<a href="blog-page.html" class="site-button">LOAD MORE.</a>
+				<a href="javascript:void(0);" onclick="js_method(${mapUser.get("user_achievement_id")})" class="site-button">更多</a>
 			</div>
 		</div>
 	</section>

@@ -44,9 +44,13 @@
               achievement_id,
               achievement_name,
               achievement_skill,
-              user_achievement_id
+              user_achievement_id,
+              achievement_images
               from user_achievement  where  user_achievement_id=#{user_achievement_id}
     </select>
+
+
+
 
 
 

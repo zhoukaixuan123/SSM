@@ -90,4 +90,23 @@ public class UserController {
         return  modelAndView;
     }
 
+    /**
+     *
+     * 功能描述:    查看更多的详情
+     *
+     * @param:
+     * @return:
+     * @auther: kaixuan
+     * @date: 2019/1/30 16:59
+     */
+    @RequestMapping("jsMethod")
+    public ModelAndView jsMethod(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView("xm");
+        String userid = "00"+request.getParameter("user_id");
+        List<Map<String, String>> mapAchievement = userService.selectUserAchievement(userid);
+        modelAndView.addObject("mapAchievement",mapAchievement);
+
+        return  modelAndView;
+    }
+
 }
