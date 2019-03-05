@@ -3,7 +3,8 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="work.com.kaixuan.demo.UserMapper">
-    <select id="selectUserById" resultType="java.util.Map">
+    <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
+    <select id="selectUserById" resultType="java.util.Map" useCache="true" >
       select user_university,
               user_achievement_id,
               user_address,
@@ -18,7 +19,7 @@
               from kaixuan_user  where  user_id='1'
     </select>
 
-    <select id="selectUserSkill" resultType="java.util.Map" parameterType="java.lang.String">
+    <select id="selectUserSkill" resultType="java.util.Map" parameterType="java.lang.String" useCache="true" >
       select skill_describe,
               skill_describe_one,
               skill_name,
@@ -28,7 +29,7 @@
             user_skill_id=#{user_skill_id}
     </select>
 
-    <select id="selectUserSkillXQ" resultType="java.util.Map" parameterType="java.lang.String">
+    <select id="selectUserSkillXQ" resultType="java.util.Map" parameterType="java.lang.String" useCache="true" >
       select skill_describe,
               skill_describe_one,
               skill_name,
@@ -38,7 +39,7 @@
             user_id=#{user_id}
     </select>
 
-    <select id="selectUserAchievement" resultType="java.util.Map" parameterType="java.lang.String">
+    <select id="selectUserAchievement" resultType="java.util.Map" parameterType="java.lang.String" useCache="true" >
       select achievement_describe,
               achievement_function,
               achievement_id,

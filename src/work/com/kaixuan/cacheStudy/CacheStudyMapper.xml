@@ -6,7 +6,7 @@
 
     <cache type="org.mybatis.caches.ehcache.EhcacheCache"/>
 
-    <select id="getCode" resultType="com.sample.CasePubCodetable"  useCache="true" >
+    <select id="getCode" resultType="java.util.HashMap"  useCache="true" >
          select * from case_pub_codetable  limit 1
      </select>
 

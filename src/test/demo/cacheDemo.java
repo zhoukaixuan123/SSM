@@ -55,13 +55,13 @@ public class cacheDemo {
 
 
 
-        com.sample.CasePubCodetable  user=orderMapper.getCode();
+        List<Map<String,String>>  user=orderMapper.getCode();
         System.out.println("缓存 第一次"+user.toString());
         //这个close必须要加，不然缓存存不进去。
         sqlSession1.close();
 
 
-        com.sample.CasePubCodetable  user2=orderMapper2.getCode();
+        List<Map<String,String>>  user2=orderMapper2.getCode();
         System.out.println("缓存 第二次"+user2.toString());
         sqlSession2.close();
 

@@ -19,7 +19,7 @@ public class CacheStudyServiceImpl implements CacheStudyService {
     private CacheStudyMapper cacheStudyMapper;
 
 
-    public com.sample.CasePubCodetable getCode() {
+    public List<Map<String,String>> getCode() {
         return cacheStudyMapper.getCode();
     }
 }

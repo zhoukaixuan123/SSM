@@ -23,7 +23,7 @@ public class CacheStudyController {
     @RequestMapping("getCode")
     @ResponseBody
     public String getCode(){
-        com.sample.CasePubCodetable  map = cacheStudyService.getCode();
+        List<Map<String,String>>  map = cacheStudyService.getCode();
         return "111";
     }
 

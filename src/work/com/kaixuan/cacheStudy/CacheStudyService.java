@@ -10,5 +10,5 @@ import java.util.Map;
  */
 public interface CacheStudyService {
 
-    public com.sample.CasePubCodetable  getCode();
+    public List<Map<String,String>> getCode();
 }
